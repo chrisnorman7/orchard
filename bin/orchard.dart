@@ -25,7 +25,7 @@ Future<void> main(final List<String> arguments) async {
   }
   final random = Random();
   final t = Timer.periodic(
-    const Duration(seconds: 5),
+    const Duration(seconds: 10),
     (final _) {
       final plants = optionsLoader.options.plants;
       if (plants.isEmpty) {
@@ -57,6 +57,7 @@ Future<void> main(final List<String> arguments) async {
         );
         return false;
       },
+
       // Harvest a plant.
       'x': () {
         final plant = optionsLoader.options.getPlantAt(screen.cursorPosition);
@@ -79,8 +80,12 @@ Future<void> main(final List<String> arguments) async {
         }
         return false;
       },
-      // Plant a new plant.
+
+      // Plant a seed.
       'c': () {
+        if (optionsLoader.options.seeds <= 0) {
+          return false;
+        }
         final plant = optionsLoader.options.getPlantAt(screen.cursorPosition);
         if (plant != null) {
           return false;
