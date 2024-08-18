@@ -12,7 +12,7 @@ import 'package:text_game_ui/text_game_ui.dart';
 List<String> getStatusLines(final GameOptionsLoader<OrchardOptions> loader) {
   final options = loader.options;
   return [
-    '${options.fruit}f ${options.seeds}s ${options.gold}g',
+    'Seeds: ${options.seeds} Fruit: ${options.fruit} gold: ${options.gold}',
   ];
 }
 
