@@ -28,4 +28,4 @@ If left alone, another fruit will grow, and the plant will be represented by the
 
 ## Harvesting
 
-When you harvest fruits, they get added to your basked. You can sell the fruits in your basket as well as buy new seeds in the market. The prices in the market will fluctuate, but that's just commerce I'm afraid.
+When you harvest fruits, they get added to your basked. You can sell the fruits in your basket as well as buy new seeds in the market. The prices in the market will fluctuate, but that's just commerce, I'm afraid.
