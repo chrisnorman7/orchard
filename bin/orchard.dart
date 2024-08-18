@@ -8,7 +8,16 @@ import 'package:orchard/src/orchard_plant_state.dart';
 import 'package:path/path.dart' as path;
 import 'package:text_game_ui/text_game_ui.dart';
 
+/// Get suitable status lines.
+List<String> getStatusLines(final GameOptionsLoader<OrchardOptions> loader) {
+  final options = loader.options;
+  return [
+    '${options.fruit}f ${options.seeds}s ${options.gold}g',
+  ];
+}
+
 Future<void> main(final List<String> arguments) async {
+  final screen = GameScreen.fromLoadedOptions();
   final optionsLoader = GameOptionsLoader(
     filename: path.join(GameOptionsLoader.homeDirectory, '.orchard.json'),
     loadOptions: (final source) {
@@ -19,7 +28,6 @@ Future<void> main(final List<String> arguments) async {
       return OrchardOptions.fromJson(json);
     },
   );
-  final screen = GameScreen.fromLoadedOptions();
   for (final plant in optionsLoader.options.plants) {
     screen.setTile(plant.coordinates, plant.braille);
   }
@@ -76,7 +84,7 @@ Future<void> main(final List<String> arguments) async {
           }
           screen
             ..setTileAtCursorPosition(plant.braille)
-            ..redrawScreen();
+            ..redrawScreen(statusLines: getStatusLines(optionsLoader));
         }
         return false;
       },
@@ -96,7 +104,9 @@ Future<void> main(final List<String> arguments) async {
         );
         optionsLoader.options.plants.add(seed);
         optionsLoader.options.seeds--;
-        screen.setTileAtCursorPosition(seed.braille);
+        screen
+          ..setTileAtCursorPosition(seed.braille)
+          ..redrawScreen(statusLines: getStatusLines(optionsLoader));
         return false;
       },
     },
