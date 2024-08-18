@@ -49,8 +49,8 @@ Future<void> main(final List<String> arguments) async {
   final keyHandler = SimpleKeyHandler.withDefaults(
     screen: screen,
     extraKeys: {
-      // Dig up a plant.
-      'z': () {
+      // Chop down a plant.
+      'c': () {
         screen.clearTileAtCursorPosition();
         optionsLoader.options.plants.removeWhere(
           (final plant) => plant.coordinates == screen.cursorPosition,
@@ -59,7 +59,7 @@ Future<void> main(final List<String> arguments) async {
       },
 
       // Harvest a plant.
-      'x': () {
+      'h': () {
         final plant = optionsLoader.options.getPlantAt(screen.cursorPosition);
         if (plant != null) {
           switch (plant.state) {
@@ -82,7 +82,7 @@ Future<void> main(final List<String> arguments) async {
       },
 
       // Plant a seed.
-      'c': () {
+      'p': () {
         if (optionsLoader.options.seeds <= 0) {
           return false;
         }
