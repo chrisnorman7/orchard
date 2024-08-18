@@ -96,6 +96,7 @@ Future<void> main(final List<String> arguments) async {
       },
     },
   );
+  screen.redrawScreen();
   await screen.run(keyHandler.handleKey);
   t.cancel();
   optionsLoader.save();
