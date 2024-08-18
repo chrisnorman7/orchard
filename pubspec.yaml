@@ -1,0 +1,20 @@
+name: orchard
+description: Grow a braille orchard.
+version: 1.0.0
+repository: https://github.com/chrisnorman7/orchard
+publish_to: "none"
+
+environment:
+  sdk: ^3.5.0-323.2.beta
+
+dependencies:
+  json_annotation: ^4.9.0
+  path: ^1.9.0
+  text_game_ui:
+    path: ../text_game_ui
+
+dev_dependencies:
+  build_runner: ^2.4.12
+  json_serializable: ^6.8.0
+  lints: ^4.0.0
+  test: ^1.24.0
